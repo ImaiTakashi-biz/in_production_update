@@ -34,9 +34,9 @@ today = datetime.now(tokyo_tz).date()
 weekday_map = {0: "月曜日", 1: "火曜日", 2: "水曜日", 3: "木曜日", 4: "金曜日", 5: "土曜日", 6: "日曜日"}
 day_of_week_str = weekday_map[today.weekday()]
 
-# テスト用に火曜日(weekday()==1)に設定。本番は金曜日(4)に変更。
+# 本番用に金曜日(weekday()==4)に設定。
 # 0:月, 1:火, 2:水, 3:木, 4:金, 5:土, 6:日
-if today.weekday() == 1:
+if today.weekday() == 4:
     num_runs = 3
     print(f"本日は{day_of_week_str}です。3日分のデータを作成します。")
 else:
