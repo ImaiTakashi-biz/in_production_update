@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 import numpy as np
-from datetime import date
+from datetime import date, timedelta
 
 # === 設定 ===
 EXCEL_PATH = r"\\192.168.1.200\共有\生産管理課\セット予定表.xlsx"
@@ -64,7 +64,7 @@ for col in integer_columns:
 df["manufacturing_check"] = 0
 df["cleaning_check"] = 0
 df["cleaning_instruction"] = 0
-df["acquisition_date"] = date.today().strftime("%Y-%m-%d")
+df["acquisition_date"] = (date.today() + timedelta(days=1)).strftime("%Y-%m-%d")
 
 # カラム順を整理（指定順でDBに格納）
 column_order = [
