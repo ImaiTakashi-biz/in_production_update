@@ -7,7 +7,7 @@ from zoneinfo import ZoneInfo
 # === 設定 ===
 EXCEL_PATH = r"\\192.168.1.200\共有\生産管理課\セット予定表.xlsx"
 SHEET_NAME = "生産中"
-DB_PATH = "set_schedule.db"
+DB_PATH = r"\\192.168.1.200\共有\製造課\ロボパット\python app\Cleaning_instructions.db"
 TABLE_NAME = "production_plan"
 
 # Excel列名 → DBカラム名 マッピング
