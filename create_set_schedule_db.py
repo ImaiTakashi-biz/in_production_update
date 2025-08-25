@@ -187,7 +187,9 @@ def main():
             required_quantity INTEGER,
             material_id INTEGER,
             cleaning_instruction INTEGER DEFAULT 0,
-            acquisition_date TEXT
+            acquisition_date TEXT,
+            previous_day_set INTEGER DEFAULT 0,
+            notes TEXT
         )
         """)
         print("テーブル作成が完了しました。")
@@ -219,7 +221,9 @@ def main():
         "required_quantity",
         "material_id",
         "cleaning_instruction",
-        "acquisition_date"
+        "acquisition_date",
+        "previous_day_set",
+        "notes TEXT"
     ]
 
     # --- ループ処理でDBに登録 ---
