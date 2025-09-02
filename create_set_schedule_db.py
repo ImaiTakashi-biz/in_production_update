@@ -194,6 +194,20 @@ def main():
         """)
         print("テーブル作成が完了しました。")
 
+        # --- 1ヶ月前のデータを削除 ---
+        print("1ヶ月前の古いデータを削除しています...")
+        one_month_ago = today - timedelta(days=30)
+        delete_date_str = one_month_ago.strftime("%Y-%m-%d")
+        
+        cur.execute(f"DELETE FROM {TABLE_NAME} WHERE acquisition_date < ?", (delete_date_str,))
+        deleted_count = cur.rowcount
+        conn.commit()
+        
+        if deleted_count > 0:
+            print(f"-> {delete_date_str} より前のデータ {deleted_count} 件を削除しました。")
+        else:
+            print("-> 削除対象の古いデータはありませんでした。")
+
     except sqlite3.Error as e:
         error_detail = traceback.format_exc()
         send_error_email(error_detail, program_name, program_path)
