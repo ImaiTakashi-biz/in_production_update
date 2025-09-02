@@ -139,6 +139,29 @@ def download_cleaning_instructions():
         if sheet_name in workbook.sheetnames:
             del workbook[sheet_name]
             print(f"既存のシート '{sheet_name}' を削除しました。")
+        
+        # シート数が5以上の場合、最も古い日付のシートを削除
+        while len(workbook.sheetnames) >= 5:
+            # 日付形式のシート名（MMDD）を持つシートのみを対象とする
+            date_sheets = []
+            for ws_name in workbook.sheetnames:
+                if len(ws_name) == 4 and ws_name.isdigit():
+                    date_sheets.append(ws_name)
+            
+            if date_sheets:
+                # 日付順でソートして最も古いシートを特定
+                date_sheets.sort()
+                oldest_sheet = date_sheets[0]
+                del workbook[oldest_sheet]
+                print(f"シート数制限により、最も古いシート '{oldest_sheet}' を削除しました。")
+            else:
+                # 日付形式のシートがない場合は最初のシートを削除
+                if workbook.sheetnames:
+                    oldest_sheet = workbook.sheetnames[0]
+                    del workbook[oldest_sheet]
+                    print(f"シート数制限により、シート '{oldest_sheet}' を削除しました。")
+                else:
+                    break
             
         sheet = workbook.create_sheet(title=sheet_name)
         print(f"新しいシート '{sheet_name}' を作成しました。")
