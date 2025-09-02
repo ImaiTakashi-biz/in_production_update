@@ -90,7 +90,7 @@ def download_cleaning_instructions():
     
     # --- 設定 ---
     db_path = r'\\192.168.1.200\共有\製造課\ロボパット\python app\cleaning_instructions.db'
-    excel_path = r'C:\Users\SEIZOU-20\Desktop\洗浄指示書.xlsx'
+    excel_path = r'\\192.168.1.200\共有\生産管理課\洗浄指示書\洗浄指示書.xlsx'
     
     try:
         # --- 東京時間の今日の日付を取得 ---
